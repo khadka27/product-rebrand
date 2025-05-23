@@ -1,0 +1,429 @@
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Adjust based on your header height */
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 255, 255, 255;
+}
+
+/* Update the base font size for body text (Roboto) */
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  font-family: var(--font-roboto), sans-serif;
+  font-size: 19px; /* Increased from 18px */
+  line-height: 1.6;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1); /* Subtle feedback on tap for mobile */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.heading-font,
+button,
+.button {
+  font-family: var(--font-oswald), sans-serif;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Ensure FAQ questions display in their original case */
+.accordion-trigger {
+  text-transform: none !important;
+}
+
+.font-heading {
+  font-family: var(--font-oswald), sans-serif !important;
+}
+
+/* Increase font size for font-body elements */
+.font-body {
+  font-family: var(--font-roboto), sans-serif !important;
+  font-size: 1.05rem; /* Added to increase font-body text size */
+}
+
+h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 2.25rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+  line-height: 1.3;
+}
+
+/* Increase font size for paragraphs */
+p {
+  margin-bottom: 1rem;
+  font-size: 1.05rem; /* Added to increase paragraph text size */
+}
+
+/* Increase font size for list items */
+li {
+  font-size: 1.05rem; /* Added to increase list item text size */
+}
+
+/* Active state for buttons */
+button:active,
+a:active {
+  transform: scale(0.98);
+}
+
+/* Improved touch targets for mobile */
+@media (max-width: 768px) {
+  button,
+  a {
+    min-height: 44px; /* Apple's recommended minimum touch target size */
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 142 76% 36%;
+    --primary-foreground: 355 100% 97.3%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 142 76% 36%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 142 76% 36%;
+    --primary-foreground: 355 100% 97.3%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 142 76% 36%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Shining Button Effect */
+.shine-button {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.shine-button:hover {
+  transform: scale(1.05);
+}
+
+.shine-button:active {
+  transform: scale(0.95);
+}
+
+.shine-button::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  animation: shine 3s infinite;
+}
+
+/* Enhanced Button Effects */
+.enhanced-shine-button {
+  animation: subtle-zoom 2s infinite alternate ease-in-out;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.2), 0 0 45px rgba(255, 255, 255, 0.1);
+  z-index: 10;
+  position: relative;
+}
+
+.enhanced-shine-button::before {
+  animation: enhanced-shine 4s infinite;
+  opacity: 0.8;
+}
+
+.glare-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0) 80%,
+    transparent 100%
+  );
+  animation: glare-move 3s infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Yellow button specific enhancements */
+.bg-yellow-500.enhanced-shine-button {
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.5), 0 0 30px rgba(245, 158, 11, 0.3), 0 0 45px rgba(245, 158, 11, 0.1);
+}
+
+/* Green button specific enhancements */
+.bg-green-700.enhanced-shine-button {
+  box-shadow: 0 0 15px rgba(21, 128, 61, 0.5), 0 0 30px rgba(21, 128, 61, 0.3), 0 0 45px rgba(21, 128, 61, 0.1);
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  20% {
+    left: 100%;
+    opacity: 0;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes enhanced-shine {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  20% {
+    left: 100%;
+    opacity: 0;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes subtle-zoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.03);
+  }
+}
+
+@keyframes glare-move {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+/* Trust badges section */
+.trust-badge-section {
+  background: linear-gradient(to right, #f9f9f9, #ffffff, #f9f9f9);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.trust-badge-title {
+  color: #15803d;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-top: 12px;
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+/* Improved readability for elderly users */
+.section-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Increase font size for specific text classes */
+.large-text {
+  font-size: 19px; /* Increased from 18px */
+  line-height: 1.6;
+}
+
+.extra-large-text {
+  font-size: 21px; /* Increased from 20px */
+  line-height: 1.7;
+}
+
+.high-contrast {
+  color: #000000;
+}
+
+.btn-large {
+  font-size: 20px !important;
+  padding: 16px 32px !important;
+  border-radius: 8px !important;
+}
+
+.list-item-large {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.badge-text {
+  font-size: 16px !important;
+}
+
+/* 3D Perspective Styles */
+.perspective {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+/* Adjust mobile font sizes */
+@media (max-width: 768px) {
+  body {
+    font-size: 18px; /* Slightly smaller on mobile but still larger than before */
+  }
+
+  p,
+  li,
+  .font-body {
+    font-size: 1rem; /* Adjusted for mobile */
+  }
+
+  .shine-button {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Improve tap targets */
+  button,
+  a,
+  .accordion-trigger {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Ensure buttons have proper feedback */
+  button:active,
+  a:active {
+    opacity: 0.8;
+  }
+}
+
+/* Improve text wrapping and overflow handling */
+.break-words {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.break-all {
+  word-break: break-all;
+}
+
+/* Ensure all containers handle overflow properly */
+.container {
+  overflow-x: hidden;
+}
+
+/* Ensure links wrap properly on mobile */
+a {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Improve mobile text readability */
+@media (max-width: 640px) {
+  .text-base {
+    font-size: 0.9375rem; /* Slightly smaller on very small screens */
+  }
+
+  ol li,
+  ul li {
+    margin-left: -0.5rem; /* Pull lists in slightly on mobile */
+  }
+}
+
+/* Ensure all images stay within their containers */
+img {
+  max-width: 100%;
+  height: auto;
+}
